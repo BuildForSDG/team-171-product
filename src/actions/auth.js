@@ -93,7 +93,6 @@ export const signupUser = (name, email, password) => (dispatch) => {
     .then((result) => {
       dispatch(receiveSignup(result.user));
       result.user.updateProfile({ displayName: name })
-        .catch((error) => console.log(error));
     })
     .catch((error) => dispatch(signupError(error)));
 };
