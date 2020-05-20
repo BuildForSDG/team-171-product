@@ -1,6 +1,7 @@
-import firebase from "firebase/app";
-import "firebase/auth";
-import "firebase/firestore";
+/* eslint-disable linebreak-style */
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import 'firebase/firestore';
 
 const devConfig = {
   apiKey: process.env.REACT_APP_DEV_API_KEY,
@@ -10,7 +11,7 @@ const devConfig = {
   storageBucket: process.env.REACT_APP_DEV_STORAGE_BUCKET,
   messagingSenderId: process.env.REACT_APP_DEV_MESSAGING_SENDER_ID,
   appId: process.env.REACT_APP_DEV_APP_ID,
-  measurementId: process.env.REACT_APP_DEV_MEASUREMENT_ID,
+  measurementId: process.env.REACT_APP_DEV_MEASUREMENT_ID
 };
 
 const prodConfig = {
@@ -21,10 +22,10 @@ const prodConfig = {
   storageBucket: process.env.REACT_APP_PROD_STORAGE_BUCKET,
   messagingSenderId: process.env.REACT_APP_PROD_MESSAGING_SENDER_ID,
   appId: process.env.REACT_APP_PROD_APP_ID,
-  measurementId: process.env.REACT_APP_PROD_MEASUREMENT_ID,
+  measurementId: process.env.REACT_APP_PROD_MEASUREMENT_ID
 };
 
-const config = process.env.NODE_ENV === "production" ? prodConfig : devConfig;
+const config = process.env.NODE_ENV === 'production' ? prodConfig : devConfig;
 
 export const myFirebase = firebase.initializeApp(config);
 const baseDb = myFirebase.firestore();
