@@ -103,5 +103,5 @@ build
 # TernJS port file
 .tern-port
 
-# Firebase
+# Firebase 
 .firebaserc
