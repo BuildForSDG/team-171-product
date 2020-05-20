@@ -92,7 +92,7 @@ export const signupUser = (name, email, password) => (dispatch) => {
     .createUserWithEmailAndPassword(email, password)
     .then((result) => {
       dispatch(receiveSignup(result.user));
-      result.user.updateProfile({ displayName: name })
+      result.user.updateProfile({ displayName: name });
     })
     .catch((error) => dispatch(signupError(error)));
 };

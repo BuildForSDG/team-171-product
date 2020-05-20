@@ -1,7 +1,29 @@
 {
+  "name": "team-171-product",
+  "version": "0.1.0",
+  "private": false,
+  "keywords": [
+    "js-starter",
+    "boilerplate"
+  ],
+  "license": "MIT",
   "author": {
-    "email": "kariuantony@gmail.com",
-    "name": "antony kamau"
+    "name": "antony kamau",
+    "email": "kariuantony@gmail.com"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "directories": {
+    "test": "__tests__"
+  },
+  "scripts": {
+    "build": "react-scripts build",
+    "dev": "parcel ./build/index.html",
+    "lint": "eslint \"src/**/*.js\"",
+    "start": "react-scripts start",
+    "test": "jest",
+    "test:cover": "jest --coverage",
+    "test:watch": "jest --watch"
   },
   "browserslist": {
     "development": [
@@ -14,6 +36,9 @@
       "not dead",
       "not op_mini all"
     ]
+  },
+  "eslintConfig": {
+    "extends": "react-app"
   },
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
@@ -41,30 +66,5 @@
     "eslint-plugin-import": "^2.20.2",
     "jest": "^24.9.0",
     "parcel-bundler": "^1.12.4"
-  },
-  "directories": {
-    "test": "__tests__"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "keywords": [
-    "js-starter",
-    "boilerplate"
-  ],
-  "license": "MIT",
-  "main": "dist/index.js",
-  "name": "team-171-product",
-  "private": false,
-  "scripts": {
-    "build": "react-scripts build",
-    "dev": "parcel ./build/index.html",
-    "lint": "eslint \"src/**/*.js\"",
-    "start": "react-scripts start",
-    "test": "jest",
-    "test:cover": "jest --coverage",
-    "test:watch": "jest --watch"
-  },
-  "types": "dist/index.d.ts",
-  "version": "0.1.0"
+  }
 }
