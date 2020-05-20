@@ -8,7 +8,6 @@ const ProtectedRoute = ({
   ...rest
 }) => (
   <Route
-    {...rest}
     render={(props) =>
       isVerifying ? (
         <div />
