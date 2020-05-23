@@ -10,7 +10,10 @@ import {
   SIGNUP_SUCCESS,
   SIGNUP_FAILURE,
   VERIFY_REQUEST,
-  VERIFY_SUCCESS
+  VERIFY_SUCCESS,
+  QUERY_USER_REQUEST,
+  QUERY_USER_SUCCESS,
+  QUERY_USER_FAILURE
 } from '../actions';
 
 export default (
@@ -24,7 +27,11 @@ export default (
     logoutError: false,
     isAuthenticated: false,
     isSettingName: false,
-    user: {}
+    isQuering: false,
+    queryError: false,
+    user: {},
+    error: {},
+    userData: {}
   },
   action
 ) => {
@@ -86,7 +93,7 @@ export default (
         isSigningUp: false,
         signupError: true,
         isAuthenticated: false,
-        error: {}
+        error: action.error
       };
     case VERIFY_REQUEST:
       return {
@@ -98,6 +105,23 @@ export default (
       return {
         ...state,
         isVerifying: false
+      };
+    case QUERY_USER_REQUEST:
+      return {
+        ...state,
+        isQuering: true
+      };
+    case QUERY_USER_SUCCESS:
+      return {
+        ...state,
+        isQuering: false,
+        userData: action.user
+      };
+    case QUERY_USER_FAILURE:
+      return {
+        ...state,
+        queryError: true,
+        error: action.error
       };
     default:
       return false;

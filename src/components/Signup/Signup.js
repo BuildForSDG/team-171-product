@@ -11,14 +11,15 @@ const Signup = (props) => {
   const formik = useFormik({
     initialValues: {
       name: "",
+      username: "",
       email: "",
       password: "",
       confirm: "",
     },
     onSubmit: (values) => {
       // confirm password
-      const { name, email, password } = values;
-      dispatch(signupUser(name, email, password));
+      const { name, username, email, password } = values;
+      dispatch(signupUser(name, username, email, password));
       console.log(signupError);
     },
   });
@@ -31,13 +32,21 @@ const Signup = (props) => {
           <Link to="/login">Sign In</Link>
         </div>
         <form onSubmit={formik.handleSubmit}>
-          <label htmlFor="email">name</label>
+          <label htmlFor="name">name</label>
           <input
             id="name"
             name="name"
             type="text"
             onChange={formik.handleChange}
             value={formik.values.name}
+          />
+          <label htmlFor="username">username</label>
+          <input
+            id="username"
+            name="username"
+            type="text"
+            onChange={formik.handleChange}
+            value={formik.values.username}
           />
           <label htmlFor="email">Email</label>
           <input

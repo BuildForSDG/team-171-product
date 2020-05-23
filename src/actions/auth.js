@@ -1,5 +1,5 @@
 /* eslint-disable linebreak-style */
-import { myFirebase } from '../firebase/firebase';
+import { myFirebase, db } from '../firebase/firebase';
 
 export const LOGIN_REQUEST = 'LOGIN_REQUEST';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
@@ -16,52 +16,37 @@ export const SIGNUP_FAILURE = 'SIGNUP_FAILURE';
 export const VERIFY_REQUEST = 'VERIFY_REQUEST';
 export const VERIFY_SUCCESS = 'VERIFY_SUCCESS';
 
-const requestLogin = () => ({
-  type: LOGIN_REQUEST
-});
+export const QUERY_USER_REQUEST = 'QUERY_USER_REQUEST';
+export const QUERY_USER_SUCCESS = 'QUERY_USER_SUCCESS';
+export const QUERY_USER_FAILURE = 'QUERY_USER_FAILURE';
 
-const receiveLogin = (user) => ({
-  type: LOGIN_SUCCESS,
-  user
-});
+const requestLogin = () => ({ type: LOGIN_REQUEST });
 
-const loginError = () => ({
-  type: LOGOUT_FAILURE
-});
+const receiveLogin = (user) => ({ type: LOGIN_SUCCESS, user });
 
-const requestLogout = () => ({
-  type: LOGOUT_REQUEST
-});
+const loginError = () => ({ type: LOGOUT_FAILURE });
 
-const receiveLogout = () => ({
-  type: LOGOUT_SUCCESS
-});
+const requestLogout = () => ({ type: LOGOUT_REQUEST });
 
-const logoutError = () => ({
-  type: LOGOUT_FAILURE
-});
+const receiveLogout = () => ({ type: LOGOUT_SUCCESS });
 
-const requestSignup = () => ({
-  type: SIGNUP_REQUEST
-});
+const logoutError = () => ({ type: LOGOUT_FAILURE });
 
-const receiveSignup = (user) => ({
-  type: SIGNUP_SUCCESS,
-  user
-});
+const requestSignup = () => ({ type: SIGNUP_REQUEST });
 
-const signupError = (error) => ({
-  type: SIGNUP_FAILURE,
-  error
-});
+const receiveSignup = (user) => ({ type: SIGNUP_SUCCESS, user });
 
-const verifyRequest = () => ({
-  type: VERIFY_REQUEST
-});
+const signupError = (error) => ({ type: SIGNUP_FAILURE, error });
 
-const verifySuccess = () => ({
-  type: VERIFY_SUCCESS
-});
+const verifyRequest = () => ({ type: VERIFY_REQUEST });
+
+const verifySuccess = () => ({ type: VERIFY_SUCCESS });
+
+const requestUser = () => ({ type: QUERY_USER_REQUEST });
+
+const receiveUser = (user) => ({ type: QUERY_USER_SUCCESS, user });
+
+const queryError = (error) => ({ type: QUERY_USER_FAILURE, error });
 
 export const loginUser = (email, password) => (dispatch) => {
   dispatch(requestLogin());
@@ -85,16 +70,31 @@ export const logoutUser = () => (dispatch) => {
     });
 };
 
-export const signupUser = (name, email, password) => (dispatch) => {
+export const signupUser = (name, username, email, password) => (dispatch) => {
   dispatch(requestSignup());
   myFirebase
     .auth()
     .createUserWithEmailAndPassword(email, password)
     .then((result) => {
       dispatch(receiveSignup(result.user));
-      result.user.updateProfile({ displayName: name });
+      result.user.updateProfile({ displayName: username });
+      db.collection('users').add({
+        name
+      }).catch((error) => error);
     })
     .catch((error) => dispatch(signupError(error)));
+};
+
+export const fetchUser = () => (dispatch) => {
+  dispatch(requestUser());
+  db.collection('users').get()
+    .then((snapshot) => {
+      const all = [];
+      snapshot.forEach((doc) => {
+        all.push(doc.data());
+      });
+      dispatch(receiveUser(all));
+    }).catch((error) => dispatch(queryError(error)));
 };
 
 export const verifyAuth = () => (dispatch) => {
