@@ -1,15 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
-import { logoutUser, fetchUser } from "../../actions";
+import { logoutUser } from "../../actions";
 
 const Home = (props) => {
-  const { isLoggingOut, logoutError, dispatch, error, userData } = props; 
+  const { isLoggingOut, logoutError, dispatch, error } = props; 
   const handleLogout = () => {
     dispatch(logoutUser());
   };
-  const handleQuery = () => {
-    dispatch(fetchUser());
-  }
   return(
     <div>
       <h1>You have reached the homepage</h1>
@@ -20,9 +17,6 @@ const Home = (props) => {
 
       <div>
         <h3>Test environment Firestore</h3>
-        <button onClick={handleQuery}>Query User</button>
-        <p>User data</p>
-        {userData && <p>{JSON.stringify(userData)}</p>}
       </div>
     </div>
   );
@@ -31,8 +25,7 @@ const Home = (props) => {
 function mapStateToProps(state) {
   return {
     isLoggingOut: state.auth.isLoggingOut,
-    logoutError: state.auth.logoutError,
-    userData: state.auth.userData
+    logoutError: state.auth.logoutError
   };
 }
 
