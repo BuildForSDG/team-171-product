@@ -1,28 +1,26 @@
 import React from "react";
-import { connect } from "react-redux";
-import { logoutUser } from "../../actions";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-const Home = (props) => {
-  const { isLoggingOut, logoutError, dispatch } = props; 
-  const handleLogout = () => {
-    dispatch(logoutUser());
-  };
+import Navbar from "../Navbar/Navbar";
+import Listing from "../Listing/Listing";
+import CreateListing from "../Listing/CreateListing";
+
+import Project from "../Project/Project";
+import CreateProject from "../Project/CreateProject";
+
+
+const Home = () => {
   return(
-    <div>
-      <h1>You have reached the homepage</h1>
-      <p>Any routes here will also be protected</p>
-      <button onClick={handleLogout}>Logout</button>
-      {isLoggingOut && <p>Logging Out....</p>}
-      {logoutError && <p>Error logging out</p>}
-    </div>
+    <Router>
+      <Navbar />
+      <Switch>
+        <Route path="/listing" component={Listing} />
+        <Route path="/create-list" component={CreateListing} />
+        <Route path="/project" component={Project} />
+        <Route path="/create-project" component={CreateProject} />
+      </Switch>
+    </Router>
   );
 };
 
-function mapStateToProps(state) {
-  return {
-    isLoggingOut: state.auth.isLoggingOut,
-    logoutError: state.auth.logoutError
-  };
-}
-
-export default connect (mapStateToProps)(Home);
+export default Home;

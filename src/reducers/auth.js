@@ -23,8 +23,8 @@ export default (
     signupError: false,
     logoutError: false,
     isAuthenticated: false,
-    isSettingName: false,
-    user: {}
+    user: {},
+    error: {}
   },
   action
 ) => {
@@ -86,7 +86,7 @@ export default (
         isSigningUp: false,
         signupError: true,
         isAuthenticated: false,
-        error: {}
+        error: action.error
       };
     case VERIFY_REQUEST:
       return {

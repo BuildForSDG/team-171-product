@@ -16,52 +16,27 @@ export const SIGNUP_FAILURE = 'SIGNUP_FAILURE';
 export const VERIFY_REQUEST = 'VERIFY_REQUEST';
 export const VERIFY_SUCCESS = 'VERIFY_SUCCESS';
 
-const requestLogin = () => ({
-  type: LOGIN_REQUEST
-});
+const requestLogin = () => ({ type: LOGIN_REQUEST });
 
-const receiveLogin = (user) => ({
-  type: LOGIN_SUCCESS,
-  user
-});
+const receiveLogin = (user) => ({ type: LOGIN_SUCCESS, user });
 
-const loginError = () => ({
-  type: LOGOUT_FAILURE
-});
+const loginError = () => ({ type: LOGOUT_FAILURE });
 
-const requestLogout = () => ({
-  type: LOGOUT_REQUEST
-});
+const requestLogout = () => ({ type: LOGOUT_REQUEST });
 
-const receiveLogout = () => ({
-  type: LOGOUT_SUCCESS
-});
+const receiveLogout = () => ({ type: LOGOUT_SUCCESS });
 
-const logoutError = () => ({
-  type: LOGOUT_FAILURE
-});
+const logoutError = () => ({ type: LOGOUT_FAILURE });
 
-const requestSignup = () => ({
-  type: SIGNUP_REQUEST
-});
+const requestSignup = () => ({ type: SIGNUP_REQUEST });
 
-const receiveSignup = (user) => ({
-  type: SIGNUP_SUCCESS,
-  user
-});
+const receiveSignup = (user) => ({ type: SIGNUP_SUCCESS, user });
 
-const signupError = (error) => ({
-  type: SIGNUP_FAILURE,
-  error
-});
+const signupError = (error) => ({ type: SIGNUP_FAILURE, error });
 
-const verifyRequest = () => ({
-  type: VERIFY_REQUEST
-});
+const verifyRequest = () => ({ type: VERIFY_REQUEST });
 
-const verifySuccess = () => ({
-  type: VERIFY_SUCCESS
-});
+const verifySuccess = () => ({ type: VERIFY_SUCCESS });
 
 export const loginUser = (email, password) => (dispatch) => {
   dispatch(requestLogin());
@@ -85,14 +60,14 @@ export const logoutUser = () => (dispatch) => {
     });
 };
 
-export const signupUser = (name, email, password) => (dispatch) => {
+export const signupUser = (name, username, email, password) => (dispatch) => {
   dispatch(requestSignup());
   myFirebase
     .auth()
     .createUserWithEmailAndPassword(email, password)
     .then((result) => {
       dispatch(receiveSignup(result.user));
-      result.user.updateProfile({ displayName: name });
+      result.user.updateProfile({ displayName: username });
     })
     .catch((error) => dispatch(signupError(error)));
 };
