@@ -7,7 +7,7 @@ import CreateListing from "../Listing/CreateListing";
 
 import Project from "../Project/Project";
 import CreateProject from "../Project/CreateProject";
-
+import Footer from "../Footer/Footer";
 
 const Home = () => {
   return(
@@ -19,6 +19,7 @@ const Home = () => {
         <Route path="/project" component={Project} />
         <Route path="/create-project" component={CreateProject} />
       </Switch>
+      <Footer />
     </Router>
   );
 };
