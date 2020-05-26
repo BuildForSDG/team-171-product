@@ -13,30 +13,32 @@ const Navbar = (props) => {
   return(
     <div className="navbar">
       <div className="logo">
-        {/* logo goes here */}
-        <h1>SkillMatcher</h1>
+        <p>SkillMatcher</p>
+      </div>
+      <div className="Account">
+        Account
       </div>
       <div className="for-work">
         <div className="job-listing">
           <Link to="/listing" style={{ textDecoration: "none" }} className="job-link"> 
-            <p>Job Listing</p>
+            <span>Job Listing</span>
           </Link>          
         </div>
         <div className="projects">
           <Link to="/project" style={{ textDecoration: "none" }} className="job-link"> 
-            <p>Freelance Projects</p>
+            <span>Freelance Projects</span>
           </Link>
         </div>
       </div>
       <div className="hire-talent">
         <div className="create-job">
           <Link to="create-list" style={{ textDecoration: "none" }} className="job-link"> 
-            <p>List job opening</p>
+            <span>List job opening</span>
           </Link>
         </div>
         <div className="create-project">
           <Link to="/create-project" style={{ textDecoration: "none" }} className="job-link"> 
-            <p>Post a Project</p>
+            <span>Post a Project</span>
           </Link>
         </div>
         <div className="search-talent">

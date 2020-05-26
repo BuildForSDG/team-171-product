@@ -1,0 +1,20 @@
+.sticky-nav {
+  width: 82%;
+  height: 56px;
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  padding: 0 40px;
+  box-sizing: border-box;
+  border-bottom: 1px solid #dadada;
+  .search {
+    display: inline-flex;
+    flex-direction: row;
+    box-sizing: border-box;
+    padding: 15px 0 0 0;
+  }
+
+  .toggle {
+    padding: 15px 0 0 0;
+  }
+}

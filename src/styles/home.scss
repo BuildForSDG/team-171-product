@@ -12,26 +12,5 @@
     flex-flow: column nowrap;
     overflow-y: auto;
     border-left: 1px solid #e4e4e4;
-
-    .sticky-nav {
-      width: 82%;
-      height: 66px;
-      display: flex;
-      justify-content: space-between;
-      position: fixed;
-      padding: 0 40px;
-      box-sizing: border-box;
-      border-bottom: 1px solid #dadada;
-
-      .search {
-        display: inline-flex;
-        flex-direction: row;
-        box-sizing: border-box;
-      }
-
-      .toggle {
-        background-color: khaki;
-      }
-    }
   }
 }
