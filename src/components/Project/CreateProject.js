@@ -1,6 +1,7 @@
 import React from 'react';
 import { useFormik } from 'formik';
 import '../../styles/createproject.scss';
+import Navbar from '../Navbar/Navbar';
 
 const CreateProject = () => {
   const formik = useFormik({
@@ -20,7 +21,6 @@ const CreateProject = () => {
         'other'
       ],
       skill: '',
-      fullTime: '',
       duration: '',
       location: '',
       remote: ''
@@ -34,42 +34,57 @@ const CreateProject = () => {
   });
   return (
     <div className="project">
+      <div className="navbar">
+        <Navbar />
+      </div>
       <div className="form">
         <form onSubmit={formik.handleSubmit}>
-          <div>
+          <div className="fields">
             <label htmlFor="title">Title</label>
             <input id="title" name="title" type="text" onChange={formik.handleChange} value={formik.values.title} />
           </div>
-          <div>
+          <div className="fields">
             <label htmlFor="des">Description</label>
             <textarea id="des" name="des" type="text" onChange={formik.handleChange} value={formik.values.des} />
           </div>
-          <div>
-            
-            <label htmlFor="email">Category</label>
-            <input
-              id="category"
-              name="category"
-              type="text"
-              onChange={formik.handleChange}
-              value={formik.values.category}
-            />
+          <div className="fields">
+            {/* Categories go here */}
+            <div className="category">
+              <button type="button">Business Services</button>
+            </div>
+            <div className="category">
+              <button type="button">Other</button>
+            </div>
+            <div className="category">
+              <button type="button">Information and Technology</button>
+            </div>
+            <div className="category">
+              <button type="button">Manufaturing</button>
+            </div>
+            <div className="category">
+              <button type="button">Finance</button>
+            </div>
+            <div className="category">
+              <button type="button">Retail</button>
+            </div>
+            <div className="category">
+              <button type="button">Accounting and Legal</button>
+            </div>
+            <div className="category">
+              <button type="button">Construction and Maintenance</button>
+            </div>
+            <div className="category">
+              <button type="button">Media</button>
+            </div>
+            <div className="category">
+              <button type="button">Hospitality</button>
+            </div>
           </div>
-          <div>
+          <div className="fields">
             <label htmlFor="skill">Skills</label>
             <input id="skill" name="skill" type="text" onChange={formik.handleChange} value={formik.values.skill} />
           </div>
-          <div>
-            <label htmlFor="fullTime">Full Time</label>
-            <input
-              id="fullTime"
-              name="fullTime"
-              type="text"
-              onChange={formik.handleChange}
-              value={formik.values.fullTime}
-            />
-          </div>
-          <div>
+          <div className="fields">
             <label htmlFor="duration">Duration</label>
             <input
               id="duration"
@@ -79,7 +94,7 @@ const CreateProject = () => {
               value={formik.values.duration}
             />
           </div>
-          <div>
+          <div className="fields">
             <label htmlFor="location">Location</label>
             <input
               id="location"
@@ -89,16 +104,16 @@ const CreateProject = () => {
               value={formik.values.location}
             />
           </div>
-          <div>
+          <div className="fields">
             <label htmlFor="remote">Remote</label>
             <input id="remote" name="remote" type="text" onChange={formik.handleChange} value={formik.values.remote} />
           </div>
-          <div>
+          <div className="fields">
             <button type="reset" onClick={formik.handleReset}>
               Cancel
             </button>
           </div>
-          <div>
+          <div className="fields">
             <button type="submit">Confirm</button>
           </div>
         </form>

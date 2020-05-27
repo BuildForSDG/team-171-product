@@ -1,6 +1,7 @@
 import React from 'react';
 import { useFormik } from 'formik';
 import '../../styles/createlisting.scss';
+import Navbar from '../Navbar/Navbar';
 
 const CreateListing = () => {
   const formik = useFormik({
@@ -22,6 +23,9 @@ const CreateListing = () => {
   });
   return (
     <div className="listing">
+      <div className="navbar">
+        <Navbar />
+      </div>
       <div className="form">
         <form onSubmit={formik.handleSubmit}>
           <div>
@@ -77,7 +81,9 @@ const CreateListing = () => {
             <input id="remote" name="remote" type="text" onChange={formik.handleChange} value={formik.values.remote} />
           </div>
           <div>
-            <button type="reset" onClick={formik.handleReset}>Cancel</button>
+            <button type="reset" onClick={formik.handleReset}>
+              Cancel
+            </button>
           </div>
           <div>
             <button type="submit">Confirm</button>
