@@ -22,7 +22,7 @@ const Login = (props) => {
   });
 
   if (isAuthenticated) {
-    return <Redirect to="/" />;
+    return <Redirect to="/app" />;
   } else {
     return (
       <div className="login">

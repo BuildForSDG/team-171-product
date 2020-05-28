@@ -1,25 +1,16 @@
-import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-
-import Navbar from "../Navbar/Navbar";
-import Listing from "../Listing/Listing";
-import CreateListing from "../Listing/CreateListing";
-
-import Project from "../Project/Project";
-import CreateProject from "../Project/CreateProject";
-
+import React from 'react';
+import Navbar from '../Navbar/Navbar';
 
 const Home = () => {
-  return(
-    <Router>
-      <Navbar />
-      <Switch>
-        <Route path="/listing" component={Listing} />
-        <Route path="/create-list" component={CreateListing} />
-        <Route path="/project" component={Project} />
-        <Route path="/create-project" component={CreateProject} />
-      </Switch>
-    </Router>
+  return (
+    <div className="container">
+      <div className="navbar">
+        <Navbar />
+      </div>
+      <div className="container">
+        <h1>This is the Homepage</h1>
+      </div>
+    </div>
   );
 };
 

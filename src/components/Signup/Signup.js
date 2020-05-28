@@ -25,7 +25,7 @@ const Signup = (props) => {
     },
   });
   if (isAuthenticated) {
-    return <Redirect to="/" />;
+    return <Redirect to="/app" />;
   } else {
     return (
       <div className="signup">
