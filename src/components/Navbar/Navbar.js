@@ -36,7 +36,8 @@ const Navbar = (props) => {
         </div>
       </div>
       <div className="profile">
-        {isLoggingOut && <p>Logging Out....</p>}
+        {isLoggingOut && ( <NavLink to="/"/>
+        )}
         {logoutError && <p>{error}</p>}
         <button onClick={handleLogout}>Logout</button>
       </div>

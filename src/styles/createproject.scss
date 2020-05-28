@@ -1,16 +1,28 @@
 .project {
   display: flex;
-  padding-top: 56px;
   height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
-  justify-content: center;
+  flex-direction: row;
+
+  .navbar {
+    width: 20%;
+    background-color: #ebf2ff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+  }
 
   .form {
-    display: flex;
     width: 100%;
-    flex-direction: column;
-    overflow-y: scroll;
     padding: 20px 0;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    overflow-y: scroll;
 
     .fields {
       display: inline-flex;
@@ -52,11 +64,15 @@
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
 
+      #label {
+        grid-column: 1 / span 3;
+      }
+
       .category {
         padding: 5px;
         margin: 5px 1px;
 
-        button {
+        .button {
           background-color: #f0f0f0;
           color: #0d0c22;
           height: 36px;
@@ -74,9 +90,17 @@
           }
         }
 
-        .clicked {
+        .buttonPressed {
           background-color: #286cff;
           color: #f0f0f0;
+          height: 36px;
+          border: 1px solid black;
+          border-style: hidden;
+          border-radius: 8px;
+          padding: 0 5px;
+          box-sizing: border-box;
+          width: 100%;
+          cursor: pointer;
         }
       }
     }
@@ -94,6 +118,23 @@
     .fields:nth-child(7) {
       margin-left: 20%;
       margin-right: 40%;
+
+      input {
+        width: 30px;
+        appearance: none;
+        border: 2px solid grey;
+        border-radius: 8px;
+
+        &:hover {
+          cursor: pointer;
+          box-shadow: 1px 1px 4px #286cff;
+        }
+
+        &:checked {
+          background-color: #286cff;
+          border: 5px solid #f0f0f0;
+        }
+      }
     }
 
     .fields:nth-child(8) {
