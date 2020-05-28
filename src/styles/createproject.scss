@@ -32,6 +32,7 @@
       label {
         margin-bottom: 5px;
       }
+
       input {
         height: 30px;
         border: 1px solid grey;
@@ -45,9 +46,10 @@
       width: 50%;
       margin-left: 20%;
     }
+
     .fields:nth-child(2) {
       width: 50%;
-      margin: 10px  0 0 20%;
+      margin: 10px 0 0 20%;
       height: 140px;
 
       textarea {
@@ -109,12 +111,15 @@
       margin-left: 20%;
       width: 50%;
     }
+
     .fields:nth-child(5) {
-      margin: 0 50%  0 20%;
+      margin: 0 50% 0 20%;
     }
+
     .fields:nth-child(6) {
       margin-left: 20%;
     }
+    
     .fields:nth-child(7) {
       margin-left: 20%;
       margin-right: 40%;
