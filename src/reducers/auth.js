@@ -10,7 +10,10 @@ import {
   SIGNUP_SUCCESS,
   SIGNUP_FAILURE,
   VERIFY_REQUEST,
-  VERIFY_SUCCESS
+  VERIFY_SUCCESS,
+  CREATE_PROJECT_REQUEST,
+  CREATE_PROJECT_SUCCESS,
+  CREATE_PROJECT_FAILURE
 } from '../actions';
 
 export default (
@@ -23,8 +26,10 @@ export default (
     signupError: false,
     logoutError: false,
     isAuthenticated: false,
-    isSettingName: false,
-    user: {}
+    isAddingProject: false,
+    addingProjectError: false,
+    user: {},
+    error: {}
   },
   action
 ) => {
@@ -86,7 +91,7 @@ export default (
         isSigningUp: false,
         signupError: true,
         isAuthenticated: false,
-        error: {}
+        error: action.error
       };
     case VERIFY_REQUEST:
       return {
@@ -98,6 +103,25 @@ export default (
       return {
         ...state,
         isVerifying: false
+      };
+    case CREATE_PROJECT_REQUEST:
+      return {
+        ...state,
+        isAddingProject: true,
+        addingProjectError: false
+      };
+    case CREATE_PROJECT_SUCCESS:
+      return {
+        ...state,
+        isAddingProject: false,
+        addingProjectError: false
+      };
+    case CREATE_PROJECT_FAILURE:
+      return {
+        ...state,
+        isAddingProject: false,
+        addingProjectError: true,
+        error: action.error
       };
     default:
       return false;

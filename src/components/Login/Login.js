@@ -22,7 +22,7 @@ const Login = (props) => {
   });
 
   if (isAuthenticated) {
-    return <Redirect to="/" />;
+    return <Redirect to="/app" />;
   } else {
     return (
       <div className="login">
@@ -41,7 +41,7 @@ const Login = (props) => {
           </div>
           <div className="form">
             <div className="form-title">
-              <p>Sign In to SkillsMatcher</p>
+              <p>Sign in to SkillsMatcher</p>
             </div>
             <form onSubmit={formik.handleSubmit}>
               <label htmlFor="email">Username or Email Address</label>

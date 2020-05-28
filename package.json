@@ -41,9 +41,11 @@
     "extends": "react-app"
   },
   "dependencies": {
+    "@ant-design/icons": "^4.1.0",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+    "antd": "^4.2.5",
     "dotenv": "^8.2.0",
     "firebase": "^7.14.4",
     "formik": "^2.1.4",
@@ -60,11 +62,14 @@
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.9.5",
+    "@babel/preset-react": "^7.9.4",
     "babel-jest": "^24.9.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.1.0",
     "eslint-plugin-import": "^2.20.2",
     "jest": "^24.9.0",
-    "parcel-bundler": "^1.12.4"
+    "jest-css-modules-transform": "^4.0.0",
+    "parcel-bundler": "^1.12.4",
+    "react-test-renderer": "^16.13.1"
   }
 }
