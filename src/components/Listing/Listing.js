@@ -1,16 +1,18 @@
 /* eslint-disable linebreak-style */
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../../styles/listing.scss';
 import Navbar from '../Navbar/Navbar';
+
+import '../../styles/Container.scss';
+import '../../styles/listing.scss';
+import Profile from '../Navbar/Profile';
 
 const Listing = () => {
   return (
-    <div className="listing">
-      <div className="navbar">
-        <Navbar />
-      </div>
-      <div className="list-view">
+    <div className="container">
+      <Navbar />
+      <Profile />
+      <div className="content">
         <div className="listing-nav">
           <div>
             <Link to="/listing" style={{ textDecoration: 'none' }}>
