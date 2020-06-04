@@ -1,11 +1,10 @@
 import React from 'react';
-
-import { Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { Route, Switch } from 'react-router-dom';
 
-import ProtectedRoute from './components/Protected/ProtectedRoute';
-import Landing from './components/Landing/Landing';
+import ProtectedRoute from "./components/Protected/ProtectedRoute";
 import Home from './components/Home/Home';
+import Landing from './components/Landing/Landing';
 import Login from './components/Login/Login';
 import Signup from './components/Signup/Signup';
 import NotFound from './components/404/NotFound';
@@ -16,6 +15,7 @@ import CreateProject from './components/Project/CreateProject';
 
 function App(props) {
   const { isAuthenticated, isVerifying } = props;
+
   return (
     <Switch>
       <Route exact path="/" component={Landing} />

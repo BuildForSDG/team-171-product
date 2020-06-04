@@ -1,0 +1,123 @@
+$cta-color: #286cff;
+$form-view: #f0f0f0;
+$main-font: 'Roboto';
+$calig-font: 'Pacifico';
+$backup-font: sans-serif;
+$cta-font-color: #f0f0f0;
+$calig-color: #e29300;
+$form-font-color: #0d0c22;
+$border-color: #a7a7a7;
+$link-color: #4f3cc9;
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  width: 10px;
+  border: 1px solid black;
+  border-style: hidden;
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.container {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  font-family: $main-font;
+
+  .side-nav {
+    background-color: $cta-color;
+    display: flex;
+    flex-direction: column;
+    width: 15%;
+    height: 100vh;
+    align-items: center;
+
+    div {
+      width: 100%;
+      background-color: $cta-font-color;
+      height: 36px;
+      box-sizing: border-box;
+      padding: 5px;
+      text-align: center;
+      border: 1px solid black;
+      border-style: hidden;
+
+      .nav-link {
+        color: $form-font-color;
+        text-decoration: none;
+
+        &:hover {
+          color: $border-color;
+        }
+      }
+
+      .nav-active {
+        color: $calig-color;
+        border-bottom: 1px solid $calig-color;
+      }
+    }
+
+    .home {
+      height: 50px;
+      font-weight: bold;
+      font-size: 22px;
+      margin-bottom: 50px;
+    }
+  }
+
+  .profile {
+    background-color: $cta-color;
+    height: 7.5%;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+
+    div:first-child {
+      padding: 12px 10px 0 10px;
+      color: $cta-font-color;
+      font-size: 14px;
+      font-weight: lighter;
+    }
+
+    .logout {
+      margin-right: 30px;
+      padding: 8px 0 0 0;
+
+      button {
+        height: 30px;
+        font-size: 14px;
+        border: 1px solid black;
+        border-style: hidden;
+        border-radius: 6px;
+        padding: 0 15px;
+        color: $form-font-color;
+        margin: auto;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .content {
+    width: 80%;
+    height: 92.5%;
+    margin-top: -45.4%;
+    overflow-y: auto;
+    margin-left: 20%;
+    display: flex;
+    flex-flow: column wrap;
+    overflow-y: auto;
+  }
+}

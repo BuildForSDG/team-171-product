@@ -1,14 +1,14 @@
 import React from 'react';
 import Navbar from '../Navbar/Navbar';
+import Profile from '../Navbar/Profile';
 
 const Home = () => {
   return (
     <div className="container">
-      <div className="navbar">
-        <Navbar />
-      </div>
-      <div className="container">
-        <h1>This is the Homepage</h1>
+      <Navbar />
+      <Profile />
+      <div className="content">
+        <h2>Homepage</h2>
       </div>
     </div>
   );
