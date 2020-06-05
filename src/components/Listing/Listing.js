@@ -5,13 +5,13 @@ import Navbar from '../Navbar/Navbar';
 
 import '../../styles/Container.scss';
 import '../../styles/listing.scss';
-import Profile from '../Navbar/Profile';
+import TopNav from '../Navbar/TopNav';
 
 const Listing = () => {
   return (
     <div className="container">
       <Navbar />
-      <Profile />
+      <TopNav />
       <div className="content">
         <div className="listing-nav">
           <div>

@@ -13,7 +13,10 @@ import {
   VERIFY_SUCCESS,
   CREATE_PROJECT_REQUEST,
   CREATE_PROJECT_SUCCESS,
-  CREATE_PROJECT_FAILURE
+  CREATE_PROJECT_FAILURE,
+  CREATE_JOB_REQUEST,
+  CREATE_JOB_SUCCESS,
+  CREATE_JOB_FAILURE
 } from '../actions';
 
 export default (
@@ -28,6 +31,8 @@ export default (
     isAuthenticated: false,
     isAddingProject: false,
     addingProjectError: false,
+    isAddingJob: false,
+    addingJobError: false,
     user: {},
     error: {}
   },
@@ -121,6 +126,25 @@ export default (
         ...state,
         isAddingProject: false,
         addingProjectError: true,
+        error: action.error
+      };
+    case CREATE_JOB_REQUEST:
+      return {
+        ...state,
+        isAddingJob: true,
+        addingJobError: false
+      };
+    case CREATE_JOB_SUCCESS:
+      return {
+        ...state,
+        isAddingJob: false,
+        addingJobError: false
+      };
+    case CREATE_JOB_FAILURE:
+      return {
+        ...state,
+        isAddingJob: false,
+        addingJobError: true,
         error: action.error
       };
     default:

@@ -4,13 +4,13 @@ import { Link } from 'react-router-dom';
 
 import Navbar from '../Navbar/Navbar';
 import '../../styles/Container.scss';
-import Profile from '../Navbar/Profile';
+import TopNav from '../Navbar/TopNav';
 
 const Project = () => {
   return (
     <div className="container">
       <Navbar />
-      <Profile />
+      <TopNav />
       <div className="content">
         <div className="search">search component goes here</div>
         <div className="list-view">

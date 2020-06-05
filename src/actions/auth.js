@@ -20,6 +20,10 @@ export const CREATE_PROJECT_REQUEST = 'CREATE_PROJECT_REQUEST';
 export const CREATE_PROJECT_SUCCESS = 'CREATE_PROJECT_SUCCESS';
 export const CREATE_PROJECT_FAILURE = 'CREATE_PROJECT_FAILURE';
 
+export const CREATE_JOB_REQUEST = 'CREATE_JOB_REQUEST';
+export const CREATE_JOB_SUCCESS = 'CREATE_JOB_SUCCESS';
+export const CREATE_JOB_FAILURE = 'CREATE_JOB_FAILURE';
+
 const requestLogin = () => ({ type: LOGIN_REQUEST });
 
 const receiveLogin = (user) => ({ type: LOGIN_SUCCESS, user });
@@ -47,6 +51,12 @@ const requestAddProject = () => ({ type: CREATE_PROJECT_REQUEST });
 const receiveAddProject = () => ({ type: CREATE_PROJECT_SUCCESS });
 
 const addProjectError = (error) => ({ type: CREATE_PROJECT_FAILURE, error });
+
+const requestAddJob = () => ({ type: CREATE_JOB_REQUEST });
+
+const receiveAddJob = () => ({ type: CREATE_JOB_SUCCESS });
+
+const addJobError = (error) => ({ type: CREATE_JOB_FAILURE, error });
 
 export const loginUser = (email, password) => (dispatch) => {
   dispatch(requestLogin());
@@ -108,6 +118,7 @@ export const addProject = (data) => (dispatch) => {
     category: data.category,
     skill: data.skill,
     duration: data.duration,
+    location: data.location,
     remote: data.remote,
     created: new Date(),
     owner: myFirebase.auth().currentUser.uid,
@@ -115,4 +126,22 @@ export const addProject = (data) => (dispatch) => {
   }).then(() => {
     dispatch(receiveAddProject());
   }).catch((error) => dispatch(addProjectError(error)));
+};
+
+export const addJob = (data) => (dispatch) => {
+  dispatch(requestAddJob);
+  db.collection('jobs').add({
+    title: data.title,
+    des: data.des,
+    category: data.category,
+    fulltime: data.fulltime,
+    duration: data.duration,
+    location: data.location,
+    remote: data.remote,
+    created: new Date(),
+    owner: myFirebase.auth().currentUser.uid,
+    application: []
+  }).then(() => {
+    dispatch(receiveAddJob());
+  }).catch((error) => dispatch(addJobError(error)));
 };

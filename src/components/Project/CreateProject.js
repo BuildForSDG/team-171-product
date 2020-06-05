@@ -4,10 +4,10 @@ import { connect } from 'react-redux';
 
 import { addProject } from '../../actions';
 import Navbar from '../Navbar/Navbar';
+import TopNav from '../Navbar/TopNav';
 
 import '../../styles/Container.scss';
-import '../../styles/createproject.scss';
-import Profile from '../Navbar/Profile';
+import '../../styles/Form.scss';
 
 const BUTTONS = [
   { title: 'business services', id: 'business' },
@@ -23,8 +23,7 @@ const BUTTONS = [
 ];
 
 const CreateProject = (props) => {
-  const { isAddingProject, addingProjectError, error, dispatch } = props;
-
+  const { dispatch } = props;
   const [state, setState] = useState({ values: [] });
 
   const handleButton = (button) => {
@@ -55,15 +54,13 @@ const CreateProject = (props) => {
       values.category = state.values;
       const skills = values.skill.split(',');
       values.skill = [...skills];
-      // console.log(values);
       dispatch(addProject(values));
-      console.log(isAddingProject, addingProjectError, error);
     }
   });
   return (
     <div className="container">
       <Navbar />
-      <Profile />
+      <TopNav />
       <div className="content">
         <div className="form">
           <form onSubmit={formik.handleSubmit}>

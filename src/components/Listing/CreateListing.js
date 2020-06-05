@@ -1,74 +1,111 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useFormik } from 'formik';
-import '../../styles/Container.scss';
-import Navbar from '../Navbar/Navbar';
-import '../../styles/createlisting.scss';
-import Profile from '../Navbar/Profile';
+import { connect } from 'react-redux';
 
-const CreateListing = () => {
+import { addJob } from '../../actions';
+import Navbar from '../Navbar/Navbar';
+import TopNav from '../Navbar/TopNav';
+
+import '../../styles/Container.scss';
+import '../../styles/Form.scss';
+
+const BUTTONS = [
+  { title: 'business services', id: 'business' },
+  { title: 'information technology', id: 'information' },
+  { title: 'manufaturing', id: 'manufacturing' },
+  { title: 'finance', id: 'finance' },
+  { title: 'retail', id: 'retail' },
+  { title: 'accounting and legal', id: 'accounting' },
+  { title: 'construction and maintenance', id: 'construction' },
+  { title: 'media', id: 'media' },
+  { title: 'hospitality', id: 'hospitality' },
+  { title: 'other', id: 'other' }
+];
+
+const CreateListing = (props) => {
+  const { dispatch } = props;
+  const [state, setState] = useState({ values: [] });
+
+  const handleButton = (button) => {
+    let tmp = state.values;
+    if (state.values.includes(button)) {
+      setState({
+        values: state.values.filter((el) => el !== button)
+      });
+    } else {
+      tmp.push(button);
+      setState({
+        values: tmp
+      });
+    }
+  };
+
   const formik = useFormik({
     initialValues: {
       title: '',
       des: '',
-      category: '',
-      fullTime: '',
-      partTime: '',
+      category: [],
+      fulltime: false,
+      duration: '',
       location: '',
-      remote: ''
+      remote: false
     },
     onSubmit: (values) => {
-      console.log(values);
-      // const { name, username, email, password } = values;
-      // dispatch goes here
-      // dispatch(signupUser(name, username, email, password));
+      values.category = state.values;
+      dispatch(addJob(values));
     }
   });
   return (
     <div className="container">
       <Navbar />
-      <Profile />
+      <TopNav />
       <div className="content">
         <div className="form">
           <form onSubmit={formik.handleSubmit}>
-            <div>
+            <div className="fields">
               <label htmlFor="title">Title</label>
               <input id="title" name="title" type="text" onChange={formik.handleChange} value={formik.values.title} />
             </div>
-            <div>
+            <div className="fields">
               <label htmlFor="des">Description</label>
               <textarea id="des" name="des" type="text" onChange={formik.handleChange} value={formik.values.des} />
             </div>
-            <div>
-              <label htmlFor="email">Category</label>
+            <div className="fields">
+              <label id="label">Category</label>
+              {BUTTONS.map((bt) => (
+                <div key={bt.id} className="category">
+                  <button
+                    type="button"
+                    id={bt.id}
+                    onClick={() => handleButton(bt.id)}
+                    className={state.values.includes(bt.id) ? 'buttonPressed' : 'button'}
+                  >
+                    {bt.title}
+                  </button>
+                </div>
+              ))}
+            </div>
+            <div className="fields">
+              <label htmlFor="fulltime">Full Time</label>
               <input
-                id="category"
-                name="category"
-                type="text"
+                id="fulltime"
+                name="fulltime"
+                type="checkbox"
                 onChange={formik.handleChange}
-                value={formik.values.category}
+                value={formik.values.fulltime}
               />
             </div>
-            <div>
-              <label htmlFor="fullTime">Full Time</label>
+            <div className="fields">
+              <label htmlFor="duration">Duration</label>
               <input
-                id="fullTime"
-                name="fullTime"
+                id="duration"
+                name="duration"
                 type="text"
                 onChange={formik.handleChange}
-                value={formik.values.fullTime}
+                value={formik.values.duration}
               />
             </div>
-            <div>
-              <label htmlFor="partTime">Part Time</label>
-              <input
-                id="partTime"
-                name="partTime"
-                type="text"
-                onChange={formik.handleChange}
-                value={formik.values.partTime}
-              />
-            </div>
-            <div>
+            <div className="fields">
               <label htmlFor="location">Location</label>
               <input
                 id="location"
@@ -78,22 +115,22 @@ const CreateListing = () => {
                 value={formik.values.location}
               />
             </div>
-            <div>
+            <div className="fields">
               <label htmlFor="remote">Remote</label>
               <input
                 id="remote"
                 name="remote"
-                type="text"
+                type="checkbox"
                 onChange={formik.handleChange}
                 value={formik.values.remote}
               />
             </div>
-            <div>
+            <div className="fields">
               <button type="reset" onClick={formik.handleReset}>
                 Cancel
               </button>
             </div>
-            <div>
+            <div className="fields">
               <button type="submit">Confirm</button>
             </div>
           </form>
@@ -103,6 +140,12 @@ const CreateListing = () => {
   );
 };
 
-// map state to props
+function mapStateToProps(state) {
+  return {
+    isAddingJob: state.auth.isAddingJob,
+    addingJobError: state.auth.addingJobError,
+    error: state.auth.error
+  }
+}
 
-export default CreateListing;
+export default connect(mapStateToProps)(CreateListing);
