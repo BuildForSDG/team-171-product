@@ -7,12 +7,14 @@ import Navbar from '../Navbar/Navbar';
 import TopNav from '../Navbar/TopNav';
 
 import '../../styles/Container.scss';
-import '../../styles/Form.scss';
+
+// Data injection
+// import data from './mock2.json';
 
 const BUTTONS = [
   { title: 'business services', id: 'business' },
   { title: 'information technology', id: 'information' },
-  { title: 'manufaturing', id: 'manufacturing' },
+  { title: 'manufacturing', id: 'manufacturing' },
   { title: 'finance', id: 'finance' },
   { title: 'retail', id: 'retail' },
   { title: 'accounting and legal', id: 'accounting' },
@@ -54,14 +56,16 @@ const CreateProject = (props) => {
       values.category = state.values;
       const skills = values.skill.split(',');
       values.skill = [...skills];
+      // Data injection
+      // Object.keys(data.data).map(key => dispatch(addProject(data.data[key])));
       dispatch(addProject(values));
     }
   });
   return (
     <div className="container">
       <Navbar />
-      <TopNav />
       <div className="content">
+        <TopNav />
         <div className="form">
           <form onSubmit={formik.handleSubmit}>
             <div className="fields">

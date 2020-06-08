@@ -12,7 +12,7 @@ import WorkIcon from '@material-ui/icons/Work';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 
 const Navbar = (props) => {
-  const { user, isLoggingOut, logoutError, error, dispatch } = props;
+  const { user, isLoggingOut, dispatch } = props;
   const handleLogout = () => {
     dispatch(logoutUser());
   };
@@ -56,8 +56,10 @@ const Navbar = (props) => {
         </NavLink>
       </div>
       <div className="account">
-        <AccountCircleIcon />
-        <p>Account</p>
+        <NavLink exact to="/account" className="nav-link" activeClassName="nav-active">
+          <AccountCircleIcon />
+          <p>Account</p>
+        </NavLink>
       </div>
       <div className="settings">
         <SettingsIcon />
@@ -67,7 +69,6 @@ const Navbar = (props) => {
         <PowerSettingsNewIcon onClick={handleLogout} />
         <p onClick={handleLogout}>Logout</p>
         {isLoggingOut && <NavLink to="/" />}
-        {logoutError && <p>{error}</p>}
       </div>
     </div>
   );
@@ -77,8 +78,6 @@ function mapStateToProps(state) {
   return {
     user: state.auth.user,
     isLoggingOut: state.auth.isLoggingOut,
-    logoutError: state.auth.logoutError,
-    error: state.auth.error
   };
 }
 

@@ -2,6 +2,7 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
+import 'firebase/storage';
 
 const devConfig = {
   apiKey: process.env.REACT_APP_DEV_API_KEY,
@@ -28,5 +29,6 @@ const prodConfig = {
 const config = process.env.NODE_ENV === 'production' ? prodConfig : devConfig;
 
 export const myFirebase = firebase.initializeApp(config);
-const baseDb = myFirebase.firestore();
-export const db = baseDb;
+myFirebase.firestore().enablePersistence();
+export const db = myFirebase.firestore();
+export const storage = myFirebase.storage();

@@ -1,0 +1,54 @@
+.job {
+  margin: 5px 0;
+  border-bottom: 1px solid #cacaca;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 2fr 1fr;
+  padding: 5px;
+
+  .title {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 4px 4px 4px 20px;
+    color: #141524;
+  }
+
+  .duration {
+    grid-column-start: 4;
+    text-align: right;
+    padding: 4px;
+    font-size: 14px;
+    color: #e29300;
+  }
+
+  .des {
+    grid-column-end: span 3;
+    padding: 5px 5px 5px 15px;
+    font-size: 14px;
+  }
+
+  .category {
+    grid-row-start: 3;
+    font-size: 15px;
+    padding: 4px 4px 4px 20px;
+    display: flex;
+
+    .icon {
+      color: #0098be;
+      margin-right: 3px;
+    }
+  }
+
+  .location {
+    grid-row-start: 3;
+    padding: 4px 4px 4px 20px;
+    display: flex;
+
+     .icon {
+       color: #949494;
+       padding-top: -2px;
+     }
+  }
+}

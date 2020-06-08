@@ -10,8 +10,8 @@ const Project = () => {
   return (
     <div className="container">
       <Navbar />
-      <TopNav />
       <div className="content">
+        <TopNav />
         <div className="search">search component goes here</div>
         <div className="list-view">
           <div className="listing-link">

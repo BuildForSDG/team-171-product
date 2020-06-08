@@ -7,12 +7,11 @@ import Navbar from '../Navbar/Navbar';
 import TopNav from '../Navbar/TopNav';
 
 import '../../styles/Container.scss';
-import '../../styles/Form.scss';
 
 const BUTTONS = [
   { title: 'business services', id: 'business' },
   { title: 'information technology', id: 'information' },
-  { title: 'manufaturing', id: 'manufacturing' },
+  { title: 'manufacturing', id: 'manufacturing' },
   { title: 'finance', id: 'finance' },
   { title: 'retail', id: 'retail' },
   { title: 'accounting and legal', id: 'accounting' },
@@ -58,8 +57,8 @@ const CreateListing = (props) => {
   return (
     <div className="container">
       <Navbar />
-      <TopNav />
       <div className="content">
+        <TopNav />
         <div className="form">
           <form onSubmit={formik.handleSubmit}>
             <div className="fields">
@@ -145,7 +144,7 @@ function mapStateToProps(state) {
     isAddingJob: state.auth.isAddingJob,
     addingJobError: state.auth.addingJobError,
     error: state.auth.error
-  }
+  };
 }
 
 export default connect(mapStateToProps)(CreateListing);

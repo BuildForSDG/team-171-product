@@ -6,8 +6,8 @@ const Home = () => {
   return (
     <div className="container">
       <Navbar />
-      <TopNav />
       <div className="content">
+        <TopNav />
         <h2>Homepage</h2>
       </div>
     </div>
