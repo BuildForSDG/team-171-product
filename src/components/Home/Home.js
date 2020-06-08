@@ -1,13 +1,13 @@
 import React from 'react';
 import Navbar from '../Navbar/Navbar';
-import Profile from '../Navbar/Profile';
+import TopNav from '../Navbar/TopNav';
 
 const Home = () => {
   return (
     <div className="container">
       <Navbar />
-      <Profile />
       <div className="content">
+        <TopNav />
         <h2>Homepage</h2>
       </div>
     </div>

@@ -4,15 +4,17 @@ import { connect } from 'react-redux';
 
 import { addProject } from '../../actions';
 import Navbar from '../Navbar/Navbar';
+import TopNav from '../Navbar/TopNav';
 
 import '../../styles/Container.scss';
-import '../../styles/createproject.scss';
-import Profile from '../Navbar/Profile';
+
+// Data injection
+// import data from './mock2.json';
 
 const BUTTONS = [
   { title: 'business services', id: 'business' },
   { title: 'information technology', id: 'information' },
-  { title: 'manufaturing', id: 'manufacturing' },
+  { title: 'manufacturing', id: 'manufacturing' },
   { title: 'finance', id: 'finance' },
   { title: 'retail', id: 'retail' },
   { title: 'accounting and legal', id: 'accounting' },
@@ -23,8 +25,7 @@ const BUTTONS = [
 ];
 
 const CreateProject = (props) => {
-  const { isAddingProject, addingProjectError, error, dispatch } = props;
-
+  const { dispatch } = props;
   const [state, setState] = useState({ values: [] });
 
   const handleButton = (button) => {
@@ -55,16 +56,16 @@ const CreateProject = (props) => {
       values.category = state.values;
       const skills = values.skill.split(',');
       values.skill = [...skills];
-      // console.log(values);
+      // Data injection
+      // Object.keys(data.data).map(key => dispatch(addProject(data.data[key])));
       dispatch(addProject(values));
-      console.log(isAddingProject, addingProjectError, error);
     }
   });
   return (
     <div className="container">
       <Navbar />
-      <Profile />
       <div className="content">
+        <TopNav />
         <div className="form">
           <form onSubmit={formik.handleSubmit}>
             <div className="fields">

@@ -5,7 +5,6 @@ import { Redirect, Link } from "react-router-dom";
 
 import { useFormik } from "formik";
 import { signupUser } from "../../actions";
-import "../../styles/signup.scss";
 
 const Signup = (props) => {
   const { isAuthenticated, signupError, dispatch } = props;
