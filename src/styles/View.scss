@@ -1,3 +1,14 @@
+$cta-color: #008fb3;
+$form-view: #f0f0f0;
+$main-font: 'Roboto';
+$calig-font: 'Pacifico';
+$backup-font: sans-serif;
+$cta-font-color: #f0f0f0;
+$calig-color: #e29300;
+$form-font-color: #0d0c22;
+$border-color: #a7a7a7;
+$link-color: #4f3cc9;
+
 .job {
   margin: 5px 0;
   border-bottom: 1px solid #cacaca;
@@ -36,7 +47,7 @@
     display: flex;
 
     .icon {
-      color: #0098be;
+      color: $cta-color;
       margin-right: 3px;
     }
   }
@@ -50,5 +61,12 @@
        color: #949494;
        padding-top: -2px;
      }
+  }
+
+  .skills {
+    grid-row-start: 3;
+    padding: 4px 4px 4px 20px;
+    display: flex;
+    color: $border-color;
   }
 }

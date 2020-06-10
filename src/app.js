@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
-import { fetchJob, userData } from './actions';
+import { fetchJob, userData, fetchProject } from './actions';
 
 import ProtectedRoute from './components/Protected/ProtectedRoute';
 import Home from './components/Home/Home';
@@ -22,13 +22,20 @@ function App(props) {
     if (isAuthenticated === true) {
       dispatch(userData());
       dispatch(fetchJob());
+      dispatch(fetchProject());
     }
   });
 
   return (
     <Switch>
       <Route exact path="/" component={Landing} />
-      <ProtectedRoute exact path="/app" component={Home} isAuthenticated={isAuthenticated} isVerifying={isVerifying} />
+      <ProtectedRoute
+        exact
+        path="/app"
+        component={Home}
+        isAuthenticated={isAuthenticated}
+        isVerifying={isVerifying}
+      />
       <ProtectedRoute
         exact
         path="/listing"

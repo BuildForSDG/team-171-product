@@ -25,7 +25,10 @@ import {
   IMAGE_UPLOAD_FAILURE,
   FETCH_JOBS_REQUEST,
   FETCH_JOBS_SUCCESS,
-  FETCH_JOBS_FAILURE
+  FETCH_JOBS_FAILURE,
+  FETCH_PROJECTS_REQUEST,
+  FETCH_PROJECTS_SUCCESS,
+  FETCH_PROJECTS_FAILURE
 } from '../actions';
 
 export default (
@@ -48,7 +51,10 @@ export default (
     uploadError: false,
     isFetchingJob: false,
     fetchingJobError: false,
+    isFetchingProject: false,
+    fetchingProjectError: false,
     job: {},
+    project: {},
     data: {},
     user: {},
     error: {}
@@ -86,12 +92,8 @@ export default (
       };
     case LOGOUT_SUCCESS:
       return {
-        ...state,
         isLoggingOut: false,
-        isAuthenticated: false,
-        user: {},
-        job: {},
-        data: {}
+        isAuthenticated: false
       };
     case LOGOUT_FAILURE:
       return {
@@ -222,7 +224,27 @@ export default (
       return {
         ...state,
         isFetchingJob: false,
-        fetchingError: true,
+        fetchingJobError: true,
+        error: action.error
+      };
+    case FETCH_PROJECTS_REQUEST:
+      return {
+        ...state,
+        isFetchingProject: true,
+        fetchingProjectError: false
+      };
+    case FETCH_PROJECTS_SUCCESS:
+      return {
+        ...state,
+        isFetchingProject: false,
+        fetchingProjectError: false,
+        project: action.project
+      };
+    case FETCH_PROJECTS_FAILURE:
+      return {
+        ...state,
+        isFetchingProject: false,
+        fetchingProjectError: true,
         error: action.error
       };
     default:

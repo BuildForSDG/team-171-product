@@ -76,6 +76,7 @@ const CreateProject = (props) => {
                 type="text"
                 onChange={formik.handleChange}
                 value={formik.values.title}
+                placeholder="Enter a project title here..."
                 required
               />
             </div>
