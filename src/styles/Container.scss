@@ -724,7 +724,6 @@ $link-color: #4f3cc9;
     flex-flow: row wrap;
 
     .content {
-      background-color: green;
       display: grid;
       grid-column-start: 3;
       grid-column-end: 5;
@@ -794,7 +793,6 @@ $link-color: #4f3cc9;
       .logout {
         display: flex;
         width: 100%;
-        background-color: red;
         height: 36px;
         box-sizing: border-box;
         padding: 5px 0 0 20px;
