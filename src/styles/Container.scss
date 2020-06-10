@@ -1,0 +1,843 @@
+$cta-color: #008fb3;
+$form-view: #f0f0f0;
+$main-font: 'Roboto';
+$calig-font: 'Pacifico';
+$backup-font: sans-serif;
+$cta-font-color: #f0f0f0;
+$calig-color: #e29300;
+$form-font-color: #0d0c22;
+$border-color: #a7a7a7;
+$link-color: #4f3cc9;
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  width: 10px;
+  border: 1px solid black;
+  border-style: hidden;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.container {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  font-family: $main-font;
+
+  .content {
+    width: 82%;
+    height: 100%;
+    overflow-y: auto;
+    display: grid;
+    grid-template-columns: 4fr 2fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 5fr;
+    box-sizing: border-box;
+
+    .topNav {
+      height: 45px;
+      grid-column-end: span 2;
+      grid-row-end: 2;
+      padding-left: 50px;
+      z-index: 1;
+      color: $form-font-color;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-right: 100px;
+      box-shadow: 0 1px 1px $border-color;
+      margin-bottom: 20px;
+
+      .icon-not {
+        color: $calig-color;
+        margin-right: 20px;
+      }
+
+      .icon-lang {
+        color: $form-font-color;
+      }
+
+      div:last-child {
+        display: flex;
+        align-items: center;
+
+        p {
+          margin: 0 0 0 2px;
+          padding: 0;
+          color: $form-font-color;
+        }
+      }
+    }
+
+    .link-card {
+      height: 70px;
+      display: flex;
+      align-items: center;
+      grid-column-end: span 2;
+      grid-row-end: 3;
+      padding-left: 150px;
+
+      .link-project {
+        background-color: $cta-color;
+        box-sizing: border-box;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: bold;
+        color: $cta-font-color;
+        border: 1px solid black;
+        border-style: hidden;
+        border-radius: 4px;
+        padding: 8px 25px;
+        order: 2;
+      }
+
+      .link-listing {
+        box-sizing: border-box;
+        text-decoration: none;
+        border: 1px solid black;
+        border-radius: 4px;
+        border-style: hidden;
+        color: $border-color;
+        font-size: 16px;
+        padding: 8px 25px;
+        margin-left: 5px;
+      }
+    }
+
+    .view-card {
+      padding: 60px 40px 10px 90px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      grid-row-start: 3;
+      grid-row-end: 5;
+    }
+
+    .search-card {
+      padding: 10px;
+      height: 300px;
+      box-sizing: border-box;
+      display: flex;
+      flex-flow: column wrap;
+      grid-row-start: 3;
+      grid-row-end: 3;
+      grid-column-start: 2;
+      justify-content: center;
+      align-content: center;
+    }
+
+    .skill-card {
+      height: 300px;
+      padding: 10px;
+      box-sizing: border-box;
+      display: flex;
+      flex-flow: column wrap;
+      grid-row-start: 4;
+      grid-row-end: 4;
+      grid-column-start: 2;
+      justify-content: center;
+      align-content: center;
+    }
+
+    .form {
+      grid-column-start: 1;
+      grid-column-end: 3;
+    }
+  }
+
+  .side-nav {
+    display: flex;
+    flex-direction: column;
+    width: 18%;
+    height: 100vh;
+    align-items: center;
+    box-sizing: border-box;
+    border: 1px solid black;
+    border-style: hidden;
+    box-shadow: 1px 0 1px #dadada;
+    z-index: 1;
+
+    .profile {
+      width: 100%;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 10px 0 40px 0;
+      margin-bottom: 40px;
+      box-sizing: border-box;
+      border-bottom: 1px solid #b4b4b4;
+
+      .photo {
+        background-color: #f0f0f0;
+        width: 70px;
+        height: 70px;
+        border: 1px solid black;
+        box-sizing: border-box;
+        border-style: hidden;
+        border-radius: 50%;
+        box-shadow: 0 20px 20px #a8a8a8;
+        margin: 40px 0 20px 0;
+        padding: 12px 10px 12px 6px;
+
+        .no-image {
+          text-align: center;
+          font-size: 25px;
+          font-family: $calig-font;
+          color: $cta-color;
+          font-weight: bolder;
+
+          p {
+            margin: 0;
+            padding: 0;
+          }
+        }
+      }
+
+      .name {
+        font-size: 18px;
+        font-weight: bold;
+        color: $form-font-color;
+      }
+    }
+
+    .home,
+    .listing,
+    .project,
+    .c-listing,
+    .c-project,
+    .account,
+    .settings,
+    .logout {
+      display: flex;
+      width: 100%;
+      height: 36px;
+      box-sizing: border-box;
+      padding: 5px 0 0 40px;
+      border: 1px solid black;
+      border-style: hidden;
+
+      .nav-link {
+        display: flex;
+        justify-content: space-around;
+        color: $form-font-color;
+        text-decoration: none;
+
+        p {
+          margin: 0;
+          padding-top: 3px;
+        }
+
+        &:hover {
+          color: $border-color;
+        }
+      }
+
+      .nav-active {
+        color: $cta-color;
+      }
+
+      p {
+        margin: 0;
+        padding: 0 10px;
+      }
+    }
+
+    .account {
+      margin-top: 60px;
+    }
+
+    .logout {
+      margin-top: 30px;
+
+      & > * {
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.form {
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 100px;
+  padding-bottom: 200px;
+
+  form {
+    width: 60%;
+    box-sizing: border-box;
+    padding: 15px;
+  }
+
+  .fields {
+    display: inline-flex;
+    flex-direction: column;
+    padding: 5px;
+
+    label {
+      margin-bottom: 5px;
+      color: $form-font-color;
+    }
+
+    input {
+      height: 40px;
+      padding: 4px 4px 4px 20px;
+      box-sizing: border-box;
+      border: 1px solid grey;
+      background-color: #f0f0f0;
+      border-radius: 4px;
+
+      &[type='checkbox'] {
+        width: 25px;
+      }
+    }
+  }
+
+  .fields:first-child {
+    width: 100%;
+  }
+
+  .fields:nth-child(2) {
+    width: 100%;
+    margin: 10px 0 0 0;
+    height: 140px;
+
+    textarea {
+      height: 108px;
+      border-radius: 4px;
+      background-color: #f0f0f0;
+      border: 1px inset #afcbff;
+    }
+  }
+
+  .fields:nth-child(3) {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+
+    #label {
+      grid-column: 1 / span 3;
+    }
+
+    .category {
+      padding: 5px;
+      margin: 5px 1px;
+      width: auto;
+      height: auto;
+
+      .button {
+        background-color: #f0f0f0;
+        color: #0d0c22;
+        height: 36px;
+        border: 1px solid black;
+        border-style: hidden;
+        border-radius: 8px;
+        padding: 0 5px;
+        box-sizing: border-box;
+        width: 100%;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #286cff;
+          color: #f0f0f0;
+        }
+      }
+
+      .buttonPressed {
+        background-color: #286cff;
+        color: #f0f0f0;
+        height: 36px;
+        border: 1px solid black;
+        border-style: hidden;
+        border-radius: 8px;
+        padding: 0 5px;
+        box-sizing: border-box;
+        width: 100%;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .fields:nth-child(4) {
+    width: 100%;
+  }
+
+  .fields:nth-child(5) {
+    margin: 0 50% 0 0;
+  }
+
+  .fields:nth-child(7) {
+    width: 100%;
+  }
+
+  .fields:nth-child(8) {
+    width: 50%;
+    padding: 0;
+
+    button {
+      height: 40px;
+      font-size: 14px;
+      color: #f0f0f0;
+      border: 1px solid black;
+      border-style: hidden;
+      border-radius: 8px 0 0 8px;
+      padding: 0 40px;
+      background: #0d0c22;
+      cursor: pointer;
+    }
+  }
+
+  .fields:last-child {
+    margin-top: 10px;
+    width: 50%;
+    padding: 0;
+
+    button {
+      height: 40px;
+      font-size: 14px;
+      color: #f0f0f0;
+      border: 1px solid black;
+      border-style: hidden;
+      border-radius: 0 8px 8px 0;
+      padding: 0 40px;
+      background: #286cff;
+      cursor: pointer;
+    }
+  }
+}
+
+.signup {
+  display: flex;
+  height: 100vh;
+  font-family: $main-font, $backup-font;
+  flex-direction: row;
+
+  .cta-section {
+    width: 38%;
+    background-color: $cta-color;
+    box-sizing: border-box;
+    display: inline-flex;
+    flex-direction: column;
+
+    .cta-head {
+      height: 70%;
+      font-weight: bold;
+      font-size: 38px;
+      color: $cta-font-color;
+      display: inline-flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      p {
+        margin: 0;
+      }
+
+      span {
+        font-family: $calig-font, cursive;
+        font-weight: lighter;
+        color: $calig-color;
+      }
+    }
+
+    .cta-des {
+      height: 30%;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      color: $cta-font-color;
+    }
+  }
+
+  .form-view {
+    width: 62%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+
+    .signin-link {
+      display: inline-flex;
+      height: 8%;
+      justify-content: flex-end;
+      align-items: flex-end;
+      padding-right: 30px;
+      font-size: 14px;
+
+      span {
+        color: $link-color;
+      }
+    }
+
+    .form {
+      height: 92%;
+      box-sizing: border-box;
+      display: inline-flex;
+      flex-direction: inherit;
+
+      .form-title {
+        font-weight: 700;
+        font-size: 24px;
+        color: $form-font-color;
+
+        p {
+          margin: 0;
+        }
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        padding-left: 120px;
+        padding-top: 20px;
+
+        label {
+          width: 50%;
+          align-self: flex-start;
+          margin: 3px 0;
+          font-weight: 700;
+          font-size: 15px;
+
+          &:nth-child(1) {
+            width: 140px;
+          }
+
+          &:nth-child(3) {
+            width: 140px;
+            margin-top: -80px;
+            margin-left: 160px;
+          }
+        }
+
+        input {
+          height: 40px;
+          width: 300px;
+          border: 1px solid $border-color;
+          border-style: hidden;
+          background-color: #f3f3f4;
+          border-radius: 8px;
+          padding: 10px 16px;
+          box-sizing: border-box;
+          margin: 2px 0 18px 0;
+          font-size: 16px;
+          align-self: flex-start;
+
+          &:nth-child(2) {
+            width: 140px;
+            align-self: flex-start;
+          }
+
+          &:nth-child(4) {
+            width: 140px;
+            margin-left: 160px;
+          }
+
+          &:focus {
+            outline: $cta-color;
+            box-shadow: 0 0 6px $cta-color;
+            border: 1px solid $border-color;
+          }
+
+          &:hover {
+            box-shadow: 0 0 6px $cta-color;
+          }
+        }
+
+        button {
+          width: 300px;
+          height: 36px;
+          border: 1px solid $border-color;
+          border-style: hidden;
+          border-radius: 8px;
+          box-shadow: 1px 1px 6px $border-color;
+          background-color: $cta-color;
+          color: $form-view;
+          font-weight: 400;
+          font-size: 14px;
+          margin-top: 10px;
+          align-self: flex-start;
+
+          &:hover {
+            cursor: pointer;
+            opacity: 0.9;
+          }
+        }
+      }
+    }
+  }
+}
+
+.login {
+  height: 100vh;
+  display: flex;
+  font-family: $main-font, $backup-font;
+  flex-direction: row;
+
+  .cta-section {
+    width: 38%;
+    background-color: $cta-color;
+    box-sizing: border-box;
+    display: inline-flex;
+    flex-direction: column;
+
+    .cta-head {
+      height: 70%;
+      font-weight: bold;
+      font-size: 38px;
+      color: $cta-font-color;
+      display: inline-flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      p {
+        margin: 0;
+      }
+
+      span {
+        font-family: $calig-font, cursive;
+        font-weight: lighter;
+        color: $calig-color;
+      }
+    }
+
+    .cta-des {
+      height: 30%;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      color: $cta-font-color;
+    }
+  }
+
+  .form-view {
+    width: 62%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+
+    .signup-link {
+      display: inline-flex;
+      height: 10%;
+      justify-content: flex-end;
+      align-items: flex-end;
+      padding-right: 30px;
+      font-size: 14px;
+
+      span {
+        color: $link-color;
+      }
+    }
+
+    .form {
+      height: 90%;
+      box-sizing: border-box;
+      display: inline-flex;
+      flex-direction: column;
+
+      .form-title {
+        font-weight: 700;
+        font-size: 24px;
+        color: $form-font-color;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding-top: 50px;
+        padding-left: 120px;
+
+        label {
+          margin: 5px 0;
+          font-weight: 700;
+          font-size: 15px;
+          align-self: flex-start;
+        }
+
+        input {
+          height: 40px;
+          width: 300px;
+          border: 1px solid $border-color;
+          border-style: hidden;
+          background-color: #f3f3f4;
+          border-radius: 8px;
+          padding: 10px 16px;
+          box-sizing: border-box;
+          margin: 2px 0 18px 0;
+          font-size: 16px;
+          align-self: flex-start;
+
+          &:focus {
+            outline: $cta-color;
+            box-shadow: 0 0 6px $cta-color;
+            border: 1px solid $border-color;
+          }
+
+          &:hover {
+            box-shadow: 0 0 6px $cta-color;
+          }
+        }
+
+        button {
+          height: 36px;
+          width: 300px;
+          border: 1px solid $border-color;
+          border-style: hidden;
+          border-radius: 8px;
+          box-shadow: 1px 1px 6px $border-color;
+          background-color: $cta-color;
+          color: $form-view;
+          font-weight: 400;
+          font-size: 14px;
+          margin-top: 10px;
+          align-self: flex-start;
+
+          &:hover {
+            cursor: pointer;
+            opacity: 0.9;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+@media only screen and (max-width: 480px) {
+  .container {
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+
+    .content {
+      display: grid;
+      grid-column-start: 3;
+      grid-column-end: 5;
+    }
+
+    .side-nav {
+      display: flex;
+      flex-direction: column;
+      width: 18%;
+      height: 100vh;
+      box-sizing: border-box;
+      border: 1px solid black;
+      border-style: hidden;
+      box-shadow: 1px 0 1px #dadada;
+  
+      .profile {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 5px 0 20px 0;
+        margin-bottom: 40px;
+        box-sizing: border-box;
+        border-bottom: 1px solid #b4b4b4;
+  
+        .photo {
+          background-color: #f0f0f0;
+          width: 70px;
+          height: 70px;
+          border: 1px solid black;
+          box-sizing: border-box;
+          border-style: hidden;
+          border-radius: 50%;
+          box-shadow: 0 20px 20px #a8a8a8;
+          margin: 40px 0 20px 0;
+          padding: 12px 10px 12px 6px;
+  
+          .no-image {
+            text-align: center;
+            font-size: 25px;
+            font-family: $calig-font;
+            color: $cta-color;
+            font-weight: bolder;
+  
+            p {
+              margin: 0;
+              padding: 0;
+            }
+          }
+        }
+  
+        .name {
+          font-size: 16px;
+          font-weight: bold;
+          color: $form-font-color;
+        }
+      }
+  
+      .home,
+      .listing,
+      .project,
+      .c-listing,
+      .c-project,
+      .account,
+      .settings,
+      .logout {
+        display: flex;
+        width: 100%;
+        height: 36px;
+        box-sizing: border-box;
+        padding: 5px 0 0 20px;
+        border: 1px solid black;
+        border-style: hidden;
+  
+        .nav-link {
+          display: flex;
+          justify-content: space-around;
+          color: $form-font-color;
+          text-decoration: none;
+          font-size: 14px;
+  
+          p {
+            margin: 0;
+            padding-top: 3px;
+            visibility: hidden;
+          }
+  
+          &:hover {
+            color: $border-color;
+          }
+        }
+  
+        .nav-active {
+          color: $cta-color;
+        }
+  
+        p {
+          margin: 0;
+          padding: 0 10px;
+        }
+      }
+  
+      .account {
+        margin-top: 60px;
+      }
+  
+      .logout {
+        margin-top: 30px;
+  
+        & > * {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
