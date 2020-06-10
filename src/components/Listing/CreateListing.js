@@ -50,6 +50,10 @@ const CreateListing = (props) => {
       remote: false
     },
     onSubmit: (values) => {
+      const today = new Date().getTime();
+      const month = 30.4375 * 24 * 60 * 1000;
+      values.duration = `${today + values.duration * month}`; 
+      console.log(values);
       values.category = state.values;
       dispatch(addJob(values));
     }
@@ -63,7 +67,7 @@ const CreateListing = (props) => {
           <form onSubmit={formik.handleSubmit}>
             <div className="fields">
               <label htmlFor="title">Title</label>
-              <input id="title" name="title" type="text" onChange={formik.handleChange} value={formik.values.title} />
+              <input id="title" name="title" type="text" onChange={formik.handleChange} value={formik.values.title} placeholder="Enter a job title here..." />
             </div>
             <div className="fields">
               <label htmlFor="des">Description</label>
@@ -99,7 +103,7 @@ const CreateListing = (props) => {
               <input
                 id="duration"
                 name="duration"
-                type="text"
+                type="number"
                 onChange={formik.handleChange}
                 value={formik.values.duration}
               />

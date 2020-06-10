@@ -36,6 +36,10 @@ export const FETCH_JOBS_REQUEST = 'FETCH_JOBS_REQUEST';
 export const FETCH_JOBS_SUCCESS = 'FETCH_JOBS_SUCCESS';
 export const FETCH_JOBS_FAILURE = 'FETCH_JOBS_FAILURE';
 
+export const FETCH_PROJECTS_REQUEST = 'FETCH_PROJECTS_REQUEST';
+export const FETCH_PROJECTS_SUCCESS = 'FETCH_PROJECTS_SUCCESS';
+export const FETCH_PROJECTS_FAILURE = 'FETCH_PROJECTS_FAILURE';
+
 const requestLogin = () => ({ type: LOGIN_REQUEST });
 const receiveLogin = (user) => ({ type: LOGIN_SUCCESS, user });
 const loginError = (error) => ({ type: LOGIN_FAILURE, error });
@@ -70,6 +74,11 @@ const uploadError = (error) => ({ type: IMAGE_UPLOAD_FAILURE, error });
 const requestJob = () => ({ type: FETCH_JOBS_REQUEST });
 const receiveJob = (job) => ({ type: FETCH_JOBS_SUCCESS, job });
 const jobError = (error) => ({ type: FETCH_JOBS_FAILURE, error });
+
+
+const requestProject = () => ({ type: FETCH_PROJECTS_REQUEST });
+const receiveProject = (project) => ({ type: FETCH_PROJECTS_SUCCESS, project });
+const projectError = (error) => ({ type: FETCH_PROJECTS_FAILURE, error });
 
 export const loginUser = (email, password) => (dispatch) => {
   dispatch(requestLogin());
@@ -140,6 +149,9 @@ export const addProject = (data) => (dispatch) => {
     })
     .then(() => {
       dispatch(receiveAddProject());
+      db.collection('current-p')
+        .doc('zyOKvi9gaRb4AimHvmJ')
+        .set({ job: { data } }, { merge: true });
     })
     .catch((error) => dispatch(addProjectError(error)));
 };
@@ -161,6 +173,9 @@ export const addJob = (data) => (dispatch) => {
     })
     .then(() => {
       dispatch(receiveAddJob());
+      db.collection('current')
+        .doc('xGsgiKaSe9UcDKpW8pQA')
+        .set({ job: { data } }, { merge: true });
     })
     .catch((error) => dispatch(addJobError(error)));
 };
@@ -205,4 +220,17 @@ export const fetchJob = () => (dispatch) => {
       });
       dispatch(receiveJob(myDocs[1]));
     }).catch((error) => dispatch(jobError(error)));
+};
+
+export const fetchProject = () => (dispatch) => {
+  dispatch(requestProject());
+  db.collection('current-p')
+    .get()
+    .then((snap) => {
+      const myDocs = [];
+      snap.forEach((doc) => {
+        myDocs.push(doc.data());
+      });
+      dispatch(receiveProject(myDocs[1]));
+    }).catch((error) => dispatch(projectError(error)));
 };

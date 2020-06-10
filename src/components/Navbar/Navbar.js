@@ -12,18 +12,32 @@ import WorkIcon from '@material-ui/icons/Work';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 
 const Navbar = (props) => {
-  const { user, isLoggingOut, dispatch } = props;
+  const { user, isLoggingOut, dispatch, isFetching } = props;
   const handleLogout = () => {
     dispatch(logoutUser());
+  };
+
+  const photoAlt = () => {
+    if (isFetching === false) {
+      return (
+        <div className="no-image">
+          <p>{user.displayName.charAt(0)}</p>
+        </div>
+      );
+    }
+  };
+
+  const Name = () => {
+    if (isFetching === false) {
+      return <p>{user.displayName}</p>;
+    }
   };
 
   return (
     <div className="side-nav">
       <div className="profile">
-        <div className="photo">
-          <div className="no-image">{user.photoURL === null && <p>{user.displayName.charAt(0)}</p>}</div>
-        </div>
-        <div className="name">{user.displayName}</div>
+        <div className="photo">{photoAlt()}</div>
+        <div className="name">{Name()}</div>
       </div>
       <div className="home">
         <NavLink exact to="/app" className="nav-link" activeClassName="nav-active">
@@ -62,13 +76,17 @@ const Navbar = (props) => {
         </NavLink>
       </div>
       <div className="settings">
-        <SettingsIcon />
-        <p>Settings</p>
+        <NavLink exact to="/settings" className="nav-link">
+          <SettingsIcon />
+          <p>Settings</p>
+        </NavLink>
       </div>
       <div className="logout">
-        <PowerSettingsNewIcon onClick={handleLogout} />
-        <p onClick={handleLogout}>Logout</p>
-        {isLoggingOut && <NavLink to="/" />}
+        <NavLink exact to="/logout" className="nav-link">
+          <PowerSettingsNewIcon onClick={handleLogout} />
+          <p onClick={handleLogout}>Logout</p>
+          {isLoggingOut && <NavLink to="/" />}
+        </NavLink>
       </div>
     </div>
   );
@@ -78,6 +96,7 @@ function mapStateToProps(state) {
   return {
     user: state.auth.user,
     isLoggingOut: state.auth.isLoggingOut,
+    isFetching: state.auth.isFetching
   };
 }
 
