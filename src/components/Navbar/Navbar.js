@@ -82,7 +82,7 @@ const Navbar = (props) => {
         </NavLink>
       </div>
       <div className="logout">
-        <NavLink exact to="/logout" className="nav-link">
+        <NavLink exact to="/" className="nav-link">
           <PowerSettingsNewIcon onClick={handleLogout} />
           <p onClick={handleLogout}>Logout</p>
           {isLoggingOut && <NavLink to="/" />}
