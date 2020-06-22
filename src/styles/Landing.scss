@@ -1,0 +1,157 @@
+body,
+html {
+  padding: 0;
+  margin: 0;
+}
+
+$bg-color: #f0f0f0;
+$logo: #008fb3;
+$primary: #0d0c22;
+$calig: #e29300;
+$secondary: #f1f1f1;
+$gravitas: 'Gravitas One', cursive;
+$open-sans: 'Open Sans', sans-serif;
+$playfair: 'Playfair Display', serif;
+
+#landing {
+  background: $bg-color;
+  width: 100%;
+  height: 100vh;
+  font-family: $playfair;
+  display: flex;
+  flex-flow: row wrap;
+
+  #logo {
+    margin: 40px auto 0 40px;
+    font-family: $playfair;
+    font-size: 28px;
+    color: $logo;
+  }
+
+  .nav-landing {
+    width: 50%;
+    display: flex;
+    box-sizing: border-box;
+    align-items: flex-end;
+    padding: 0 0 20px 10%;
+
+    .link {
+      text-decoration: none;
+      color: $primary;
+      font-size: 16px;
+
+      &:first-child {
+        margin-right: 35px;
+      }
+
+      &:last-child {
+        color: $calig;
+        margin-left: 18%;
+      }
+    }
+  }
+
+  .create {
+    width: 25%;
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: 10px;
+    justify-content: center;
+    text-decoration: none;
+    color: $primary;
+
+    #login {
+      text-decoration: none;
+      color: $secondary;
+      background-color: $primary;
+      font-size: 16px;
+      padding: 8px 30px;
+    }
+  }
+
+  #mantra {
+    width: 34%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: flex-end;
+
+    p {
+      color: $primary;
+      margin: 0;
+      font-family: $gravitas;
+      font-size: 25px;
+    }
+
+    #cta-button {
+      width: 100%;
+      margin-top: 40px;
+      display: flex;
+      justify-content: space-around;
+      padding: 0 10%;
+      box-sizing: border-box;
+      align-self: flex-end;
+
+      .link {
+        text-decoration: none;
+        color: $secondary;
+        padding: 8px 30px;
+        background: $calig;
+
+        &:last-child {
+          background: $primary;
+        }
+      }
+    }
+  }
+
+  #illustration {
+    position: absolute;
+    left: 35%;
+    top: 13%;
+
+    img {
+      width: 350px;
+    }
+  }
+
+  #des {
+    font-family: $open-sans;
+    font-size: 15px;
+    background: white;
+    width: 46%;
+    height: 76.5vh;
+    margin: 0 0 0 14%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    padding-right: 10px;
+    box-sizing: border-box;
+
+    div {
+      p {
+        margin: 2px 0;
+        color: $primary;
+
+        &:nth-child(2) {
+          margin-bottom: 20px;
+        }
+      }
+    }
+  }
+
+  #message {
+    width: 20%;
+    display: flex;
+    justify-content: space-around;
+    padding-left: 50px;
+    box-sizing: border-box;
+  }
+
+  #copyright {
+    width: 60%;
+    display: flex;
+    justify-content: center;
+  }
+}
